@@ -1,0 +1,21 @@
+name: deploy
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: Deploy to Datalake
+    runs-on: ubuntu-lasted
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.8
+      uses: action/setup-python@v3
+      with:
+        python-version: 3.8
+
+    - name: HashiCorp - Setup Terraform
+      uses: hashicortp/setup-terraform@v1.2.1
